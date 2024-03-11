@@ -8,6 +8,6 @@ const router = express.Router();
 router.post('/login', login);
 
 router.use('/user', User);
-router.use('/month', Month);
+router.use('/date', Month);
 
 export default router;

@@ -1,23 +1,32 @@
 import bcrypt from 'bcrypt';
-import { HttpStatusError } from 'common-errors';
 import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
 import config from '../config.js';
 
-export function login(req, res, next){
-       const { username, password } = req.body;
+export async function login(req, res, next){
+    try {
+        const { username, password } = req.body;
 
-    const user = findUser(username);
+        const user = await User.findOne({ username });
 
-    if(user){
-        console.log(password, user.password);
-        if(bcrypt.compareSync(password, user.password)){
-            const userInfo = { id: user.id, name: user.name };
-            const jwtConfig = { expiresIn: 10 };
-            const token = jwt.sign(userInfo, config.app.secretKey, jwtConfig);
-            return res.send({token});
+        //Buscar el usuario en la base de datos
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
         }
-    }
 
-    throw new HttpStatusError(401, 'Invalid credentials');
+        // Verificar la contraseña
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
+            return res.status(401).json({ message: 'Invalid password' });
+        }
+
+        //Generar token JWT
+        const token = jwt.sign({ username: user.username, rol: user.rol }, config.secretKey, { expiresIn: '1h' });
+
+        res.status(200).json({ token });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }    
 }

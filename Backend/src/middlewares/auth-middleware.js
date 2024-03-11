@@ -6,19 +6,20 @@ import config from "../config.js";
 
 export function checkToken(req, res, next){
     console.log(req.headers.authorization)
+    const authorizationHeader = req.headers.authorization;
 
-    const {authorization} = req.headers;
+    if(!authorizationHeader) throw HttpStatusError(401, 'No token provided');
 
-    if(!authorization) throw HttpStatusError(401, 'No token provided');
+    const [_bearer, token] = authorizationHeader.split(' ');
 
-    const [_bearer, token] = authorization.split(' ');
+    if(!_bearer || !token) throw HttpStatusError(401, 'Invalid token');
 
     try{
-        jwt.verify(token, config.app.secretKey);
+        const decoded = jwt.verify(token, config.secretKey);
+        req.user = decoded;
+        next();
     }catch(err){
         logger.error(err.message);
         throw HttpStatusError(401, 'Invalid token');
     }
-
-    next();
 }
