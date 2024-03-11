@@ -14,7 +14,11 @@ export async function getMonthsController(req, res) {
 export async function checkReservationsController(req, res) {
     try {
         const reservations = await checkReservations();
-        res.json(reservations);
+        if (!reservations.length) {
+            return res.status(404).json({ message: 'No hay reservas' });
+        }else{
+            res.json(reservations);
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error interno del servidor' });
@@ -28,6 +32,9 @@ export async function getDayController(req, res) {
             return res.status(400).json({ message: 'El ID del día proporcionado no es válido' });
         }
         const reservation = await getDayById(dayId);
+        if (!reservation) {
+            return res.status(404).json({ message: 'Reserva no encontrada o no existe' });
+        }
         res.json(reservation);
     } catch (error) {
         console.error(error);

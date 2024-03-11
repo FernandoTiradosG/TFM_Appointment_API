@@ -24,8 +24,9 @@ export async function getDayById(dayId) {
         }
         
         const reservation = await Dates.findById(dayId);
-        if (!reservation) {
-            throw new Error('Reservation not found');
+        console.log(reservation);
+        if (reservation === null) {
+            return null;
         }
 
         return reservation;
