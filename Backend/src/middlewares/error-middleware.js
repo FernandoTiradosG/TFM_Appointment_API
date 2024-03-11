@@ -8,4 +8,5 @@ export function errorMiddleware(err, req, res, next) {
         status, message: msg
     }
     res.status(status).send(errorResponse);
+    next();
 }

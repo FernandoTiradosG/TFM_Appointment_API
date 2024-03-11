@@ -9,7 +9,7 @@ const userSchema = new Schema({
 }, { timestamps: true });
 
 userSchema.set('toJSON', function (doc) {
-  const { __v, _id, ...object } = doc;
+  const { _id, ...object } = doc;
   object.id = _id;
   return object;
 });

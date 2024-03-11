@@ -4,7 +4,7 @@ import User from '../models/User.js';
 
 import config from '../config.js';
 
-export async function login(req, res, next){
+export async function login(req, res){
     try {
         const { username, password } = req.body;
 
