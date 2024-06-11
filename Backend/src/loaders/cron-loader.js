@@ -4,7 +4,7 @@ import Config from '../models/Config.js';
 
 export default function () {
       // Iniciar el calendario al cargar la aplicación y configurar el cron job para actualizarlo
-      cron.schedule('0 0 * * *', async () => {
+      cron.schedule('*/5 * * * *', async () => {
         console.log('Actualizando calendario...');
         // Obtener la fecha actual
         const currentDate = new Date();

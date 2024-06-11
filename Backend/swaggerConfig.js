@@ -12,7 +12,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000', // Cambia esto con la URL de tu API en producción
+        url: 'http://localhost:3001', // Cambia esto con la URL de tu API en producción
         description: 'Development server',
       },
     ],

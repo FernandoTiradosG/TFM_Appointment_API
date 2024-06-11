@@ -1,0 +1,77 @@
+/* Estilos para el contenedor de inicio de sesión */
+.inicio-sesion-container {
+  text-align: center;
+  margin-top: 100px; /* Ajusta el margen superior según sea necesario */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para el título */
+.inicio-sesion-container h2 {
+  color: #343a40; /* Color del texto */
+  font-size: 24px; /* Tamaño de fuente */
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.inicio-sesion-form {
+  width: 300px;
+  margin-top: 20px; /* Espacio entre el título y el formulario */
+}
+
+/* Estilos para los inputs del formulario */
+.inicio-sesion-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para el botón de inicio de sesión */
+.boton-iniciar-sesion {
+  background-color: #ffcc00; /* Color de fondo del botón */
+  color: #333; /* Color del texto */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.boton-iniciar-sesion:hover {
+  background-color: #ffdb4d; /* Cambio de color de fondo al pasar el mouse sobre el botón */
+}
+
+/* Estilos para el contenedor de los enlaces */
+.inicio-sesion-links {
+  margin-top: 20px; /* Espacio entre el formulario y los enlaces */
+}
+
+/* Estilos para los enlaces de registro e inicio */
+.inicio-sesion-links button {
+  background-color: #ffcc00; /* Color de fondo de los botones */
+  color: #333; /* Color del texto */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.inicio-sesion-links button:hover {
+  background-color: #ffdb4d; /* Cambio de color de fondo al pasar el mouse sobre los botones */
+}
+
+/* Estilos para el mensaje de error */
+.inicio-sesion-container p {
+  color: red; /* Color del texto de error */
+}

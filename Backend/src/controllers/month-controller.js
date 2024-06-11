@@ -13,15 +13,19 @@ export async function getMonthsController(req, res) {
 
 export async function checkReservationsController(req, res) {
     try {
-        const reservations = await checkReservations();
-        if (!reservations.length) {
-            return res.status(404).json({ message: 'No hay reservas' });
-        }else{
-            res.json(reservations);
-        }
+      console.log('Request received to fetch reservations');
+      const reservations = await checkReservations();
+      
+      if (!reservations || reservations.length === 0) {
+        console.log('No reservations found');
+        return res.status(200).json([]); // Devuelve un array vacío en lugar de un 404
+      }
+  
+      console.log('Reservations fetched:', reservations);
+      res.status(200).json(reservations);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error interno del servidor' });
+      console.error('Error fetching reservations:', error.message);
+      res.status(500).json({ message: 'Error fetching reservations' });
     }
 }
 
@@ -44,15 +48,16 @@ export async function getDayController(req, res) {
 
 export async function createReservationController(req, res) {
     try {
-        const { year, month, day, hour } = req.body;
-        const { username } = req.user;
-
-        const newReservation = await createReservation(year, month, day, hour, username);
-
-        res.status(201).json({ message: 'Reserva creada exitosamente', reservation: newReservation });
+      const { year, month, day, hour, username, nombre, correo, telefono } = req.body;
+      const reservation = await createReservation(year, month, day, hour, username);
+      reservation.nombre = nombre;
+      reservation.correo = correo;
+      reservation.telefono = telefono;
+      await reservation.save();
+      res.status(201).json(reservation);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error interno del servidor' });
+      console.error('Error creating reservation:', error.message);
+      res.status(500).json({ message: 'Error creating reservation: ' + error.message });
     }
 }
 
