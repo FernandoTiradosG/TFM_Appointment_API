@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { auth } from '../utils/firebase';
 import './CSS/Modal.css';
 
 const ModalDatosUsuario = ({ show, handleClose, handleConfirm, reservationData }) => {
@@ -16,12 +15,6 @@ const ModalDatosUsuario = ({ show, handleClose, handleConfirm, reservationData }
       setTelefono(reservationData.telefono || '');
     }
 
-    // Obtener el usuario autenticado
-    const user = auth.currentUser;
-    if (user) {
-      // Establecer el correo electrónico del usuario autenticado en el campo correspondiente
-      setCorreo(user.email || '');
-    }
   }, [reservationData]);
 
   const handleConfirmarDatos = () => {
