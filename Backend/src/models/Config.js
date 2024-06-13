@@ -3,8 +3,10 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const configSchema = new Schema({
-  weekdays: { type: Number, required: true },
-  hours: [],
+  year: { type: Number, required: true },
+  month: { type: Number, required: true },
+  day: { type: Number, required: true },
+  availableHours: [{ type: String, required: true }], // Horas disponibles para este día
 }, { timestamps: true });
 
-const Config = model('Config', configSchema);
+export default model('Config', configSchema);

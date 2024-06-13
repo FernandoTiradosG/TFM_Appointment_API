@@ -1,0 +1,392 @@
+openapi: 3.0.0
+info:
+  title: Mi API
+  description: Documentación de la API para Mi API con información detallada.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3001'
+    description: Servidor de desarrollo
+tags:
+  - name: User
+    description: Endpoints relacionados con usuarios
+  - name: Reservas
+    description: Endpoints relacionados con reservas
+paths:
+  /login:
+    post:
+      summary: Iniciar sesión
+      description: Permite a un usuario iniciar sesión y obtener un token de acceso.
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Credenciales inválidas
+        '500':
+          description: Error interno del servidor
+  /user:
+    get:
+      summary: Obtener lista de usuarios
+      description: Retorna una lista de todos los usuarios registrados en el sistema.
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: No autorizado
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Crear usuario
+      description: Crea un nuevo usuario en el sistema.
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreationRequest'
+      responses:
+        '201':
+          description: Usuario creado exitosamente
+        '500':
+          description: Error interno del servidor
+  /user/{id}:
+    get:
+      summary: Obtener usuario por ID
+      description: Retorna un usuario específico basado en su ID.
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: ID del usuario a obtener
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: No autorizado
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+    patch:
+      summary: Actualizar usuario por ID
+      description: Actualiza los datos de un usuario específico basado en su ID.
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: ID del usuario a actualizar
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Usuario actualizado exitosamente
+        '401':
+          description: No autorizado
+        '403':
+          description: Solo se puede modificar el propio perfil
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+    delete:
+      summary: Eliminar usuario por ID
+      description: Elimina un usuario específico basado en su ID.
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: ID del usuario a eliminar
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Usuario eliminado exitosamente
+        '401':
+          description: No autorizado
+        '403':
+          description: Solo se puede eliminar el propio perfil
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+  /date:
+    get:
+      summary: Obtener lista de reservas
+      description: Retorna una lista de todas las reservas registradas en el sistema.
+      tags:
+        - Reservas
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reservation'
+        '401':
+          description: No autorizado
+        '500':
+          description: Error interno del servidor
+  /date/calendar:
+    get:
+      summary: Obtener días disponibles para reservas
+      description: Retorna una lista de días disponibles para hacer reservas.
+      tags:
+        - Reservas
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarDay'
+        '401':
+          description: No autorizado
+        '500':
+          description: Error interno del servidor
+  /date/days:
+    get:
+      summary: Obtener lista de reservas
+      description: Retorna una lista de todas las reservas registradas en el sistema.
+      tags:
+        - Reservas
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reservation'
+        '401':
+          description: No autorizado
+        '500':
+          description: Error interno del servidor
+  /date/days/{dayId}:
+    get:
+      summary: Obtener reserva por ID
+      description: Retorna los detalles de una reserva específica basada en su ID.
+      tags:
+        - Reservas
+      parameters:
+        - name: dayId
+          in: path
+          description: ID de la reserva a obtener
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+        '401':
+          description: No autorizado
+        '404':
+          description: Reserva no encontrada
+        '500':
+          description: Error interno del servidor
+    patch:
+      summary: Actualizar reserva por ID
+      description: Actualiza los detalles de una reserva específica basada en su ID.
+      tags:
+        - Reservas
+      parameters:
+        - name: dayId
+          in: path
+          description: ID de la reserva a actualizar
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReservationUpdateRequest'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Reserva actualizada exitosamente
+        '401':
+          description: No autorizado
+        '404':
+          description: Reserva no encontrada
+        '500':
+          description: Error interno del servidor
+    delete:
+      summary: Eliminar reserva por ID
+      description: Elimina una reserva específica basada en su ID.
+      tags:
+        - Reservas
+      parameters:
+        - name: dayId
+          in: path
+          description: ID de la reserva a eliminar
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Reserva eliminada exitosamente
+        '401':
+          description: No autorizado
+        '404':
+          description: Reserva no encontrada
+        '500':
+          description: Error interno del servidor
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        username:
+          type: string
+        rol:
+          type: string
+      required:
+        - _id
+        - username
+        - rol
+    UserCreationRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        rol:
+          type: string
+      required:
+        - username
+        - password
+    UserUpdateRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        rol:
+          type: string
+    Reservation:
+      type: object
+      properties:
+        _id:
+          type: string
+        year:
+          type: integer
+        month:
+          type: integer
+        day:
+          type: integer
+        hour:
+          type: string
+        user:
+          type: string
+      required:
+        - _id
+        - year
+        - month
+        - day
+        - hour
+        - user
+    CalendarDay:
+      type: object
+      properties:
+        year:
+          type: integer
+        month:
+          type: integer
+        day:
+          type: integer
+        availableHours:
+          type: array
+          items:
+            type: string
