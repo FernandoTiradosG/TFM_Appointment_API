@@ -53,7 +53,7 @@ const GestionReservas = () => {
           throw new Error('No token found');
         }
 
-        const response = await fetch('http://localhost:3001/date/days', {
+        const response = await fetch('https://tfm-appointment-api.onrender.com/date/days', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -100,7 +100,7 @@ const GestionReservas = () => {
       const user = JSON.parse(userString);
       const username = user.username;
 
-      const response = await fetch('http://localhost:3001/date', {
+      const response = await fetch('https://tfm-appointment-api.onrender.com/date', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ const GestionReservas = () => {
       if (reservationToDelete) {
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`http://localhost:3001/date/days/${reservationToDelete._id}`, {
+          const response = await fetch(`https://tfm-appointment-api.onrender.com/date/days/${reservationToDelete._id}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -231,7 +231,7 @@ const GestionReservas = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3001/date/days/${reservaSeleccionada._id}`, {
+      const response = await fetch(`https://tfm-appointment-api.onrender.com/date/days/${reservaSeleccionada._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
