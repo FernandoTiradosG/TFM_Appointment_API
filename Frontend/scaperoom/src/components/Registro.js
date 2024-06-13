@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './CSS/Registro.css';
 
 function Registro() {
   const [email, setEmail] = useState('');
