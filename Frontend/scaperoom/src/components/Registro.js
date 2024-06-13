@@ -13,7 +13,7 @@ function Registro() {
     event.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3001/user', {
+      const response = await fetch('https://tfm-appointment-api.onrender.com/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
