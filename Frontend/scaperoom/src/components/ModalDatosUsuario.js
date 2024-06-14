@@ -28,7 +28,7 @@ const ModalDatosUsuario = ({ show, handleClose, handleConfirm, reservationData }
 
   return (
     <div className={show ? "modal display-block" : "modal display-none"}>
-      <section className="modal-main user-data-modal">
+      <section className="modal-main user-data-modal text-black">
         <h2>Datos del Usuario</h2>
         <form>
           <label>
