@@ -1,10 +1,12 @@
-import React from "react";
-//import MyImage from "../assests/image/amazon.webp";
+import React, { useState } from "react";
 import NewImage from "../assests/image/Imagen1.webp";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-scroll";
 
 const Home = () => {
+
+  const [nav, setNav] = useState(false);
+
   return (
     <div name="Home" className="w-full h-screen bg-gradient-to-b from-black via-black to-gray-800">
       
@@ -26,8 +28,8 @@ const Home = () => {
               Disponéis de 60 minutos para resolver los enigmas trabajando en equipo y lograr salir...¿Lo conseguiréis?
             </p>
             <div>
-              <Link to="Portfolio" smooth duration={500} className="group text-white w-fit px-6 py-3 my-2 flex items-center justify-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer">
-                Portfolio
+              <Link to="/inicio" onClick={() => setNav(!nav)} smooth duration={500} className="group text-white w-fit px-6 py-3 my-2 flex items-center justify-center rounded-md bg-gradient-to-r from-[#00901A] to-[#01CB17] cursor-pointer">
+                Reservar
                 <span className="group-hover:rotate-90 duration-300">
                   <MdOutlineKeyboardArrowRight size={25} className="ml-1" />
                 </span>

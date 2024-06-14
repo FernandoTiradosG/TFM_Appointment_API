@@ -10,7 +10,7 @@ const Contact = () => {
         
         {/* Main Title */}
         <div className="pb-8 text-center">
-          <p className="text-4xl font-bold inline border-b-4 border-blue-500">Contactos</p>
+          <p className="text-4xl font-bold inline border-b-4 border-[#01CB17]">Contactos</p>
         </div>
         
         {/* Text and Image Section */}
@@ -27,7 +27,7 @@ const Contact = () => {
             <input type="text" name="subject" placeholder="Asunto *" className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none" />
             <textarea name="message" rows={5} placeholder="Mensaje *" className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"></textarea>
 
-            <button className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300">Enviar</button>
+            <button className="text-white bg-gradient-to-b from-[#00901A] to-[#01CB17] px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300">Enviar</button>
           </form>
         </div>
 
