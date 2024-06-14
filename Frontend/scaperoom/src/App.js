@@ -10,7 +10,6 @@ import Login from './components/Login';
 import Register from './components/Registro';
 import Inicio from './components/Inicio';
 import GestionReservas from './components/GestionReservas.js';
-import Footer from './components/Footer.js';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,7 +29,6 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
         <SocialLinks />
-        <Footer />
     </Router>
     </div>
   );

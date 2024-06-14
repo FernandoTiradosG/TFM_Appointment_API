@@ -55,18 +55,18 @@ const Login = () => {
           required
           className="p-2 bg-transparent border-2 rounded-md text-white mb-4 focus:outline-none"
         />
-        <button type="submit" className="px-6 py-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:scale-105 duration-300 mb-4">
+        <button type="submit" className="px-6 py-3 rounded-md bg-gradient-to-r from-[#00901A] to-[#01CB17] text-white hover:scale-105 duration-300 mb-4">
           Iniciar Sesión
         </button>
       </form>
       <div className="flex space-x-4 mt-4">
         <Link to="/registro">
-          <button className="px-6 py-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:scale-105 duration-300">
+          <button className="px-6 py-3 rounded-md bg-gradient-to-r from-[#00901A] to-[#01CB17] text-white hover:scale-105 duration-300">
             Registrarse
           </button>
         </Link>
         <Link to="/">
-          <button className="px-6 py-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:scale-105 duration-300">
+          <button className="px-6 py-3 rounded-md bg-gradient-to-r from-[#00901A] to-[#01CB17] text-white hover:scale-105 duration-300">
             Inicio
           </button>
         </Link>
