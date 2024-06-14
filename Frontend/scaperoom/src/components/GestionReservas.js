@@ -295,7 +295,8 @@ const GestionReservas = () => {
   };
 
   return (
-    <div className="calendar-container w-full h-screen mt-28 bg-gradient-to-b from-black via-black to-gray-800 text-white flex flex-col items-center p-4">
+    <div className="calendar-container w-full h-screen bg-gradient-to-b from-black via-black to-gray-800 text-white flex flex-col items-center p-4">
+      <div className="h-16 bg-gradient-to-b from-black via-black to-gray-900"></div> {/* Space for header */}
       <div className="calendario w-full max-w-4xl mb-8 text-center">
         <h2 className="text-4xl font-bold text-white">Calendario de Reservas</h2>
         <div className="bg-gray-700 p-4 rounded-lg mt-4">
