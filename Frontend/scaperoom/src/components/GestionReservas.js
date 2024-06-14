@@ -296,10 +296,10 @@ const GestionReservas = () => {
 
   return (
     <div className="calendar-container w-full h-screen bg-gradient-to-b from-black via-black to-gray-800 text-white flex flex-col items-center p-4">
-      <div className="h-16 bg-gradient-to-b from-black via-black to-gray-900"></div> {/* Space for header */}
+      <div className="h-24 bg-gradient-to-b from-black via-black to-gray-900"></div> {/* Space for header */}
       <div className="calendario w-full max-w-4xl mb-8 text-center">
         <h2 className="text-4xl font-bold text-white">Calendario de Reservas</h2>
-        <div className="bg-gray-700 p-4 rounded-lg mt-4">
+        <div className="bg-gray-700 p-4 rounded-lg mt-4 align-middle justify-center">
           <Calendar
             onChange={setSelectedDate}
             value={selectedDate}
@@ -344,7 +344,7 @@ const GestionReservas = () => {
                   </button>
                   <button
                     onClick={() => handleAnularHora(horario.time)}
-                    className="px-4 py-2 bg-red-500 rounded-md hover:bg-red-600"
+                    className="px-4 py-2 bg-yellow-400 rounded-md hover:bg-yellow-400"
                   >
                     {!esHoraCancelada(horario.time) ? 'Anular Hora' : 'Restaurar Hora'}
                   </button>
