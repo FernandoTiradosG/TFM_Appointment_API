@@ -16,7 +16,7 @@ const ModalPago = ({ show, handleClose, handleConfirm }) => {
 
   return (
     <div className={show ? "modal display-block" : "modal display-none"}>
-      <section className="modal-main payment-modal">
+      <section className="modal-main payment-modal text-black">
         <h2>Pago</h2>
         <form>
           <label>

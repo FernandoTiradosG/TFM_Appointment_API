@@ -24,7 +24,7 @@ const ModificarModal = ({ show, handleClose, reservaSeleccionada, handleModifica
 
   return (
     <div className={show ? "modal display-block" : "modal display-none"}>
-      <section className="modal-main modify-modal">
+      <section className="modal-main modify-modal text-black">
         <h2>Modificar Reserva</h2>
         <form onSubmit={handleSubmit}>
           <label>

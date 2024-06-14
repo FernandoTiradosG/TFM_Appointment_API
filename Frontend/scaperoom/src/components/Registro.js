@@ -39,7 +39,7 @@ function Registro() {
       <h2 className="text-4xl font-bold text-white mb-8">Registro</h2>
       <form className="flex flex-col w-full max-w-md" onSubmit={handleRegistro}>
         <input
-          type="email"
+          type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Correo electrónico"
